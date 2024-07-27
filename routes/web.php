@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,4 +19,11 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [MainController::class, 'index'])->name('index');
+Route::get('/', [MainController::class, 'index'])->name('home');
+Route::get('/detail/{id}', [MainController::class, 'detail'])->name('detail');
+Route::post('/tambah-komentar/{id}', [MainController::class, 'prosesTambahArtikel'])->name('proses_komentar');
+
+
+Route::get('/admin',[AdminController::class, 'index'])->name('adminIndex');
+Route::get('/form', [AdminController::class, 'formTambahArtikel'])->name('form_tambah_artikel');
+Route::post('/tambah-artikel', [AdminController::class, 'prosesTambahArtikel'])->name('proses_tambah_artikel');
