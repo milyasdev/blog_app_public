@@ -9,12 +9,12 @@
         <!-- Header -->
         <header id="header" data-transparent="true" data-fullwidth="true" class="dark submenu-light">
             <div class="header-inner">
-                <div class="container" style="padding: 0 15px 0 15px">
+                <div class="container" style="padding: 0 300px 0 300px">
                     <!--Logo-->
                     <div id="logo">
                         <a href="#">
-                            <span class="logo-default">ArtikelHaven</span>
-                            <span class="logo-dark">ArtikelHaven</span>
+                            <span class="logo-default">myArtikel</span>
+                            <span class="logo-dark">myArtikel</span>
                         </a>
                     </div>
                     <!--End: Logo-->
@@ -33,15 +33,12 @@
                         <div class="container">
                             <nav>
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li class="dropdown"><a href="#">Kategori</a>
+                                    <li><a href="{{ route('home') }}">Home</a></li>
+                                    <li class="dropdown"><a href="#">Koneksi</a>
                                         <ul class="dropdown-menu">
-                                            <li class=""><a href="#">Blog</a>
-                                            </li>
-                                            <li class=""><a href="#">Teknologi</a>
-                                            </li>
-                                            <li class=""><a href="#">Tutorial</a>
-                                            </li>
+                                            <li><a href="https://www.linkedin.com/in/muhammad-ilyas-139403100" target="_blank">LinkedIn</a></li>
+                                            <li><a href="https://www.instagram.com/idmils?igsh=MTZ1djQwenYxMmt6eg==" target="_blank">Instagram</a></li>
+                                            <li><a href="{{ route('form-contact') }}">Hubungi Saya</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -61,8 +58,8 @@
                 <div class="container">
                     <div class="slide-captions text-center text-light">
                         <!-- Captions -->
-                        <h2 style="font-size:50px" data-caption-animate="zoom-out">Temukan Dunia Baru Lewat Tulisan Saya</h2>
-                        <p>Jelajahi berbagai artikel menarik yang telah saya tulis. Temukan wawasan baru dan nikmati bacaan yang inspiratif di sini.</p>
+                        <h2 style="font-size:40px" data-caption-animate="zoom-out">Temukan Wawasan Baru Yang Menarik</h2>
+                        <p>Jelajahi artikel menarik dan inspiratif yang telah saya tulis.</p>
                         {{-- <div><a href="#welcome" class="btn btn-primary scroll-to">Explore more</a></div> --}}
                         </span>
                         <!-- end: Captions -->
@@ -86,7 +83,7 @@
         <section id="page-title">
             <div class="container">
                 <div class="page-title">
-                    <h1>MilyasDev Portfolio | ArtikelHaven</h1>
+                    <h1>Selamat Datang di myArtikel</h1>
                     <span>Selamat Membaca, Semoga Menemukan Inspirasi.</span>
                 </div>
             </div>
@@ -102,7 +99,7 @@
                                 <div class="post-item-wrap">
                                     <div class="post-image">
                                         <a href="#">
-                                            <img alt="" src="{{ asset('assets/images/banner.jpg') }}"></a>
+                                            <img alt="" src="{{ asset('images/' . $item->foto) }}"></a>
                                         <span class="post-meta-category"><a href="">{{$item->kategori}}</a></span>
                                     </div>
                                     <div class="post-item-description">

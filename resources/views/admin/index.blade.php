@@ -35,8 +35,8 @@
                             <div class="container">
                                 <nav>
                                     <ul>
-                                        <li><a href="index.html">Home</a></li>
-                                        <li class="dropdown"><a href="#">Kategori</a>
+                                        {{-- <li><a href="index.html">Home</a></li> --}}
+                                        {{-- <li class="dropdown"><a href="#">Kategori</a>
                                             <ul class="dropdown-menu">
                                                 <li class=""><a href="#">POST</a>
                                                 </li>
@@ -45,9 +45,9 @@
                                                 <li class=""><a href="#">Tutorial</a>
                                                 </li>
                                             </ul>
-                                        </li>
+                                        </li> --}}
                                         <li>|</li>
-                                        <li><a href="index.html">Log Out</a></li>
+                                        <li><a href="{{ route('proses_logout') }}">Log Out</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -66,12 +66,10 @@
             <div class="container">
                 <nav>
                     <ul>
-                        <li class="dropdown"><a href="#">Basic</a>
+                        <li class="dropdown"><a href="#">Menu</a>
                             <ul class="dropdown-menu">
-                                <li><a href="component-datatable.html">Zero Configuration</a></li>
-                                <li><a href="component-datatable-complex-headers.html">Complex Headers</a></li>
-                                <li><a href="component-datatable-scrollable.html">Scrollable</a></li>
-                                <li><a href="component-datatable-pagination-option.html">Alternative pagination</a></li>
+                                <li><a href="{{ route('form_tambah_user') }}">Management User</a></li>
+                                <li><a href="#">Pesan Masuk</a></li>
                             </ul>
                         </li>
                         <li class="dropdown"><a href="#">Advanced</a>
@@ -147,7 +145,7 @@
         </section>
         <!-- end: Page Content -->
         <!-- Footer -->
-        @include('master.footer')
+        {{-- @include('master.footer') --}}
         <!-- end: Footer -->
     </div>
     <!-- end: Body Inner -->

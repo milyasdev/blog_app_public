@@ -9,12 +9,12 @@
         <!-- Header -->
         <header id="header" data-transparent="true" data-fullwidth="true" class="submenu-light">
             <div class="header-inner">
-                <div class="container" style="padding: 0 15px 0 15px">
+                <div class="container" style="padding: 0 300px 0 300px">
                     <!--Logo-->
                     <div id="logo">
                         <a href="#">
-                            <span class="logo-default">ArtikelHaven</span>
-                            <span class="logo-dark">ArtikelHaven</span>
+                            <span class="logo-default">myArtikel</span>
+                            <span class="logo-dark">myArtikel</span>
                         </a>
                     </div>
                     <!--End: Logo-->
@@ -34,14 +34,11 @@
                             <nav>
                                 <ul>
                                     <li><a href="{{ route('home') }}">Home</a></li>
-                                    <li class="dropdown"><a href="#">Kategori</a>
+                                    <li class="dropdown"><a href="#">Koneksi</a>
                                         <ul class="dropdown-menu">
-                                            <li class=""><a href="#">Blog</a>
-                                            </li>
-                                            <li class=""><a href="#">Teknologi</a>
-                                            </li>
-                                            <li class=""><a href="#">Tutorial</a>
-                                            </li>
+                                            <li><a href="https://www.linkedin.com/in/muhammad-ilyas-139403100" target="_blank">LinkedIn</a></li>
+                                            <li><a href="https://www.instagram.com/idmils?igsh=MTZ1djQwenYxMmt6eg==" target="_blank">Instagram</a></li>
+                                            <li><a href="{{ route('form-contact') }}">Hubungi Saya</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -74,32 +71,10 @@
                                         <h2>{{ $data->judul }}</h2>
                                         <div class="post-meta">
                                             <span class="post-meta-date"><i class="fa fa-calendar-o"></i>{{ $data->created_at->format('d M Y') }}</span>
-                                            <span class="post-meta-comments"><i class="fa fa-comments-o"></i>33 Comments</a></span>
+                                            <span class="post-meta-comments"><i class="fa fa-comments-o"></i>Telah dilihat sebanyak {{ $data->view_count }} kali</a></span>
                                             <span class="post-meta-category"><i class="fa "></i>Kategori : {{ $data->kategori }}</a></span>
-                                            {{-- <div class="post-meta-share">
-                                                <a class="btn btn-xs btn-slide btn-facebook" href="#">
-                                                    <i class="fab fa-facebook-f"></i>
-                                                    <span>Facebook</span>
-                                                </a>
-                                                <a class="btn btn-xs btn-slide btn-twitter" href="#" data-width="100">
-                                                    <i class="fab fa-twitter"></i>
-                                                    <span>Twitter</span>
-                                                </a>
-                                                <a class="btn btn-xs btn-slide btn-instagram" href="#" data-width="118">
-                                                    <i class="fab fa-instagram"></i>
-                                                    <span>Instagram</span>
-                                                </a>
-                                                <a class="btn btn-xs btn-slide btn-googleplus" href="mailto:#" data-width="80">
-                                                    <i class="icon-mail"></i>
-                                                    <span>Mail</span>
-                                                </a>
-                                            </div> --}}
                                         </div>
                                         <p>{{ $data->text }}</p>
-                                        {{-- <div class="blockquote">
-                                            <p>The world is a dangerous place to live; not because of the people who are evil, but because of the people who don't do anything about it.</p>
-                                            <small>by <cite>Albert Einstein</cite></small>
-                                        </div> --}}
                                     </div>
                                     <!-- Comments -->
                                     <div class="comments" id="comments">
@@ -110,7 +85,7 @@
                                             <!-- Comment -->
                                             @foreach ($komen as $komen)
                                             <div class="comment" id="comment-1">
-                                                <div class="image"><img alt="" src="images/blog/author.jpg" class="avatar"></div>
+                                                <div class="image"><img alt="" src="{{ asset('assets/images/author.jpg') }}" class="avatar"></div>
                                                 <div class="text">
                                                     <h5 class="name">{{$komen->nama}}</h5>
                                                     <span class="comment_date">Posted at {{$komen->created_at}}</span>
@@ -149,7 +124,7 @@
                                                     <div class="col-lg-12">
                                                         <div class="form-group">
                                                             <label class="upper" for="comment">Komentar anda</label>
-                                                            <textarea class="form-control required" name="komentar" rows="9" placeholder="Masukkkan komentar" id="comment" aria-required="true"></textarea>
+                                                            <textarea class="form-control required" maxlength="250" name="komentar" rows="9" placeholder="Masukkkan komentar" id="comment" aria-required="true"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -188,87 +163,45 @@
                                 </ul>
                                 <div class="tab-content" id="tabs-posts-content">
                                     <div class="tab-pane fade show active" id="popular" role="tabpanel" aria-labelledby="popular-tab">
+                                        @foreach ($blog as $blog)
                                         <div class="post-thumbnail-list">
                                             <div class="post-thumbnail-entry">
-                                                <img alt="" src="{{ asset('assets/images/banner.jpg') }}">
+                                                <img alt="" src="{{ asset('images/' . $blog->foto) }}">
                                                 <div class="post-thumbnail-content">
-                                                    <a href="#">A true story, that never been told!</a>
-                                                    <span class="post-date"><i class="icon-clock"></i> 6m ago</span>
-                                                    <span class="post-category"><i class="fa fa-tag"></i> Technology</span>
-                                                </div>
-                                            </div>
-                                            <div class="post-thumbnail-entry">
-                                                <img alt="" src="images/blog/thumbnail/6.jpg">
-                                                <div class="post-thumbnail-content">
-                                                    <a href="#">Beautiful nature, and rare feathers!</a>
-                                                    <span class="post-date"><i class="icon-clock"></i> 24h ago</span>
-                                                    <span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
-                                                </div>
-                                            </div>
-                                            <div class="post-thumbnail-entry">
-                                                <img alt="" src="images/blog/thumbnail/7.jpg">
-                                                <div class="post-thumbnail-content">
-                                                    <a href="#">The most happiest time of the day!</a>
-                                                    <span class="post-date"><i class="icon-clock"></i> 11h ago</span>
-                                                    <span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
+                                                    <a href="{{ route('detail', $blog->id) }}">{{ $blog->judul }}</a>
+                                                    <span class="post-date"><i class="icon-clock"></i>{{ $blog->created_at->format('d M Y') }}</span>
+                                                    <span class="post-category"><i class="fa fa-tag"></i>{{ $blog->kategori }}</span>
                                                 </div>
                                             </div>
                                         </div>
+                                        @endforeach
                                     </div>
                                     <div class="tab-pane fade" id="featured" role="tabpanel" aria-labelledby="featured-tab">
                                         <div class="post-thumbnail-list">
+                                            @foreach ($teknologi as $teknologi)
                                             <div class="post-thumbnail-entry">
-                                                <img alt="" src="images/blog/thumbnail/6.jpg">
+                                                <img alt="" src="{{ asset('images/' . $teknologi->foto) }}">
                                                 <div class="post-thumbnail-content">
-                                                    <a href="#">Beautiful nature, and rare feathers!</a>
-                                                    <span class="post-date"><i class="icon-clock"></i> 24h ago</span>
-                                                    <span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
+                                                    <a href="{{ route('detail', $teknologi->id) }}">{{ $teknologi->judul }}</a>
+                                                    <span class="post-date"><i class="icon-clock"></i>{{ $teknologi->created_at->format('d M Y') }}</span>
+                                                    <span class="post-category"><i class="fa fa-tag"></i>{{ $teknologi->kategori }}</span>
                                                 </div>
                                             </div>
-                                            <div class="post-thumbnail-entry">
-                                                <img alt="" src="images/blog/thumbnail/7.jpg">
-                                                <div class="post-thumbnail-content">
-                                                    <a href="#">The most happiest time of the day!</a>
-                                                    <span class="post-date"><i class="icon-clock"></i> 11h ago</span>
-                                                    <span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
-                                                </div>
-                                            </div>
-                                            <div class="post-thumbnail-entry">
-                                                <img alt="" src="images/blog/thumbnail/8.jpg">
-                                                <div class="post-thumbnail-content">
-                                                    <a href="#">New costs and rise of the economy!</a>
-                                                    <span class="post-date"><i class="icon-clock"></i> 11h ago</span>
-                                                    <span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
-                                                </div>
-                                            </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="recent" role="tabpanel" aria-labelledby="recent-tab">
                                         <div class="post-thumbnail-list">
+                                            @foreach ($tutorial as $tutorial)
                                             <div class="post-thumbnail-entry">
-                                                <img alt="" src="images/blog/thumbnail/7.jpg">
+                                                <img alt="" src="{{ asset('images/' . $tutorial->foto) }}">
                                                 <div class="post-thumbnail-content">
-                                                    <a href="#">The most happiest time of the day!</a>
-                                                    <span class="post-date"><i class="icon-clock"></i> 11h ago</span>
-                                                    <span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
+                                                    <a href="{{ route('detail', $tutorial->id) }}">{{ $tutorial->judul }}</a>
+                                                    <span class="post-date"><i class="icon-clock"></i>{{ $tutorial->created_at->format('d M Y') }}</span>
+                                                    <span class="post-category"><i class="fa fa-tag"></i>{{ $tutorial->kategori }}</span>
                                                 </div>
                                             </div>
-                                            <div class="post-thumbnail-entry">
-                                                <img alt="" src="images/blog/thumbnail/8.jpg">
-                                                <div class="post-thumbnail-content">
-                                                    <a href="#">New costs and rise of the economy!</a>
-                                                    <span class="post-date"><i class="icon-clock"></i> 11h ago</span>
-                                                    <span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
-                                                </div>
-                                            </div>
-                                            <div class="post-thumbnail-entry">
-                                                <img alt="" src="images/blog/thumbnail/6.jpg">
-                                                <div class="post-thumbnail-content">
-                                                    <a href="#">Beautiful nature, and rare feathers!</a>
-                                                    <span class="post-date"><i class="icon-clock"></i> 24h ago</span>
-                                                    <span class="post-category"><i class="fa fa-tag"></i> Lifestyle</span>
-                                                </div>
-                                            </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>

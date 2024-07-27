@@ -35,8 +35,8 @@
                             <div class="container">
                                 <nav>
                                     <ul>
-                                        <li><a href="index.html">Home</a></li>
-                                        <li class="dropdown"><a href="#">Kategori</a>
+                                        {{-- <li><a href="index.html">Home</a></li> --}}
+                                        {{-- <li class="dropdown"><a href="#">Kategori</a>
                                             <ul class="dropdown-menu">
                                                 <li class=""><a href="#">POST</a>
                                                 </li>
@@ -45,7 +45,7 @@
                                                 <li class=""><a href="#">Tutorial</a>
                                                 </li>
                                             </ul>
-                                        </li>
+                                        </li> --}}
                                         <li>|</li>
                                         <li><a href="{{ route('proses_logout') }}">Log Out</a></li>
                                     </ul>
@@ -66,12 +66,10 @@
             <div class="container">
                 <nav>
                     <ul>
-                        <li class="dropdown"><a href="#">Basic</a>
+                        <li class="dropdown"><a href="#">Menu</a>
                             <ul class="dropdown-menu">
-                                <li><a href="component-datatable.html">Zero Configuration</a></li>
-                                <li><a href="component-datatable-complex-headers.html">Complex Headers</a></li>
-                                <li><a href="component-datatable-scrollable.html">Scrollable</a></li>
-                                <li><a href="component-datatable-pagination-option.html">Alternative pagination</a></li>
+                                <li><a href="{{ route('form_tambah_user') }}">Management User</a></li>
+                                <li><a href="#">Pesan Masuk</a></li>
                             </ul>
                         </li>
                         <li class="dropdown"><a href="#">Advanced</a>
@@ -97,40 +95,30 @@
                     <div class="content col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <span class="h4">Form Tambah Data Artikel</span>
+                                <span class="h4">User Management</span>
                             </div>
                             <div class="card-body">
-                                <form id="form1" action="{{ route('proses_tambah_artikel') }}" class="form-validate" method="POST" enctype="multipart/form-data">
+                                <form id="form1" action="{{ route('proses_tambah_user') }}" class="form-validate" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="form-group col-md-6">
-                                            <label for="username">Judul</label>
-                                            <input type="text" class="form-control" name="judul" placeholder="Masukkan Judul" required>
+                                            <label for="username">Nama</label>
+                                            <input type="text" class="form-control" name="name" placeholder="Masukkan Nama" required>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="email">Foto</label>
-                                            <input type="file" class="form-control" name="foto" placeholder="Foto" required>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group col-md-12">
-                                            <label for="summernote">Isi Artikel</label>
-                                            <textarea id="summernote" name="text" class="form-control" rows="10"></textarea>
+                                            <label for="email">Email</label>
+                                            <input type="text" class="form-control" name="email" placeholder="Masukkan username" required>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-md-6">
-                                            <label for="category">Kategori</label>
-                                                <select id="category" name="kategori" class="form-control">
-                                                    <option value="blog">Blog</option>
-                                                    <option value="teknologi">Teknologi</option>
-                                                    <option value="tutorial">Tutorial</option>
-                                                </select>
+                                            <label for="email">Password</label>
+                                            <input type="password" class="form-control" name="password" placeholder="Masukkan password" required>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-md-6">
-                                            <button type="submit" class="btn m-t-50 mt-3">Submit</button>
+                                            <button type="submit" class="btn m-t-50 mt-3">Create</button>
                                             <a href="{{ route('adminIndex') }}" class="btn m-t-50 mt-3 btn-light">Cancel</a>
                                         </div>
                                     </div>
@@ -144,7 +132,7 @@
         </section>
         <!-- end: Page Content -->
         <!-- Footer -->
-        @include('master.footer')
+        {{-- @include('master.footer') --}}
         <!-- end: Footer -->
     </div>
     <!-- end: Body Inner -->
