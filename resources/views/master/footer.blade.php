@@ -4,14 +4,13 @@
             <div class="row">
                 <div class="col-lg-5">
                     <div class="widget">
-                        <div class="widget-title">Polo HTML5 Template</div>
-                        <p class="mb-5">Built with love in Fort Worth, Texas, USA<br> All rights reserved. Copyright © 2021. INSPIRO.</p>
-                        <a href="https://themeforest.net/item/polo-responsive-multipurpose-html5-template/13708923" class="btn btn-inverted" target="_blank">Purchase Now</a>
+                        <div class="widget-title">MILYASDEV PORTFOLIO | ARTIKELHAVEN</div>
+                        <p class="mb-5">Built with love in Jakarta, Indonesia<br></p>
                     </div>
                 </div>
                 <div class="col-lg-7">
                     <div class="row">
-                        <div class="col-lg-3">
+                        <div class="col-lg-3" style="visibility: hidden">
                             <div class="widget">
                                 <div class="widget-title">Discover</div>
                                 <ul class="list">
@@ -24,7 +23,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-3" style="visibility: hidden">
                             <div class="widget">
                                 <div class="widget-title">Features</div>
                                 <ul class="list">
@@ -35,7 +34,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-3" style="visibility: hidden">
                             <div class="widget">
                                 <div class="widget-title">Pages</div>
                                 <ul class="list">
@@ -47,11 +46,12 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="widget">
-                                <div class="widget-title">Support</div>
+                                <div class="widget-title">Koneksi</div>
                                 <ul class="list">
-                                    <li><a href="#">Help Desk</a></li>
-                                    <li><a href="#">Documentation</a></li>
-                                    <li><a href="#">Contact Us</a></li>
+                                    <li><a href="#">LinkedIn</a></li>
+                                    <li><a href="#">Instagram</a></li>
+                                    <li><a href="#">Hubungi Saya</a></li>
+
                                 </ul>
                             </div>
                         </div>
@@ -62,7 +62,7 @@
     </div>
     <div class="copyright-content">
         <div class="container">
-            <div class="copyright-text text-center">&copy; 2021 POLO - Responsive Multi-Purpose HTML5 Template. All Rights Reserved.<a href="https://www.inspiro-media.com" target="_blank" rel="noopener"> INSPIRO</a> </div>
+            <div class="copyright-text text-center">&copy; 2024 MilyasDev - ArtikelHaven | All Rights Reserved.</div>
         </div>
     </div>
 </footer>
