@@ -9,10 +9,10 @@
         <!-- Header -->
         <header id="header" data-transparent="true" data-fullwidth="true" class="dark submenu-light">
             <div class="header-inner">
-                <div class="container" style="padding: 0 300px 0 300px">
+                <div class="container">
                     <!--Logo-->
                     <div id="logo">
-                        <a href="#">
+                        <a href="{{ route('home') }}">
                             <span class="logo-default">myArtikel</span>
                             <span class="logo-dark">myArtikel</span>
                         </a>
@@ -53,13 +53,13 @@
         <!-- Inspiro Slider -->
         <div id="slider" class="inspiro-slider slider-fullscreen dots-creative" data-fade="true">
             <!-- Slide 1 -->
-            <div class="slide kenburns" data-bg-image="{{ asset('assets/images/banner.jpg') }}">
+            <div class="slide kenburns" data-bg-image="{{ asset('images/' . $banner->banner) }}">
                 <div class="bg-overlay"></div>
                 <div class="container">
                     <div class="slide-captions text-center text-light">
                         <!-- Captions -->
                         <h2 style="font-size:40px" data-caption-animate="zoom-out">Temukan Wawasan Baru Yang Menarik</h2>
-                        <p>Jelajahi artikel menarik dan inspiratif yang telah saya tulis.</p>
+                        <p>Jelajahi artikel bermanfaat dan informatif yang telah saya tulis.</p>
                         {{-- <div><a href="#welcome" class="btn btn-primary scroll-to">Explore more</a></div> --}}
                         </span>
                         <!-- end: Captions -->
@@ -94,6 +94,7 @@
             <div class="container">
                 <div class="row">
                     @foreach ($data as $item)
+                        @if ($item->status == '1')
                         <div class="content col-lg-4">
                             <div class="post-item border">
                                 <div class="post-item-wrap">
@@ -113,6 +114,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
                     @endforeach
                 </div>
             </div>

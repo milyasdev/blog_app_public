@@ -9,10 +9,10 @@
         <!-- Header -->
         <header id="header" data-transparent="true" data-fullwidth="true" class="submenu-light">
             <div class="header-inner">
-                <div class="container" style="padding: 0 300px 0 300px">
+                <div class="container">
                     <!--Logo-->
                     <div id="logo">
-                        <a href="#">
+                        <a href="{{ route('home') }}">
                             <span class="logo-default">myArtikel</span>
                             <span class="logo-dark">myArtikel</span>
                         </a>

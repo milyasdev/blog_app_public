@@ -6,7 +6,7 @@
     <link rel="icon" type="image/png" href="images/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Document title -->
-    <title>MilyasDev | MyArtikel</title>
+    <title>myArtikel | Milyasdev</title>
     <!-- Stylesheets & Fonts -->
     <link href="{{ asset('assets/css/plugins.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">

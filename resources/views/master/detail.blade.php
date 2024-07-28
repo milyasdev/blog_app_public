@@ -9,10 +9,10 @@
         <!-- Header -->
         <header id="header" data-transparent="true" data-fullwidth="true" class="submenu-light">
             <div class="header-inner">
-                <div class="container" style="padding: 0 300px 0 300px">
+                <div class="container">
                     <!--Logo-->
                     <div id="logo">
-                        <a href="#">
+                        <a href="{{ route('home') }}">
                             <span class="logo-default">myArtikel</span>
                             <span class="logo-dark">myArtikel</span>
                         </a>
@@ -74,7 +74,7 @@
                                             <span class="post-meta-comments"><i class="fa fa-comments-o"></i>Telah dilihat sebanyak {{ $data->view_count }} kali</a></span>
                                             <span class="post-meta-category"><i class="fa "></i>Kategori : {{ $data->kategori }}</a></span>
                                         </div>
-                                        <p>{{ $data->text }}</p>
+                                        {!! $data->text !!}
                                     </div>
                                     <!-- Comments -->
                                     <div class="comments" id="comments">
@@ -164,43 +164,49 @@
                                 <div class="tab-content" id="tabs-posts-content">
                                     <div class="tab-pane fade show active" id="popular" role="tabpanel" aria-labelledby="popular-tab">
                                         @foreach ($blog as $blog)
-                                        <div class="post-thumbnail-list">
-                                            <div class="post-thumbnail-entry">
-                                                <img alt="" src="{{ asset('images/' . $blog->foto) }}">
-                                                <div class="post-thumbnail-content">
-                                                    <a href="{{ route('detail', $blog->id) }}">{{ $blog->judul }}</a>
-                                                    <span class="post-date"><i class="icon-clock"></i>{{ $blog->created_at->format('d M Y') }}</span>
-                                                    <span class="post-category"><i class="fa fa-tag"></i>{{ $blog->kategori }}</span>
+                                            @if ($blog->status == '1')
+                                            <div class="post-thumbnail-list">
+                                                <div class="post-thumbnail-entry">
+                                                    <img alt="" src="{{ asset('images/' . $blog->foto) }}">
+                                                    <div class="post-thumbnail-content">
+                                                        <a href="{{ route('detail', $blog->id) }}">{{ $blog->judul }}</a>
+                                                        <span class="post-date"><i class="icon-clock"></i>{{ $blog->created_at->format('d M Y') }}</span>
+                                                        <span class="post-category"><i class="fa fa-tag"></i>{{ $blog->kategori }}</span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                            @endif
                                         @endforeach
                                     </div>
                                     <div class="tab-pane fade" id="featured" role="tabpanel" aria-labelledby="featured-tab">
                                         <div class="post-thumbnail-list">
                                             @foreach ($teknologi as $teknologi)
-                                            <div class="post-thumbnail-entry">
-                                                <img alt="" src="{{ asset('images/' . $teknologi->foto) }}">
-                                                <div class="post-thumbnail-content">
-                                                    <a href="{{ route('detail', $teknologi->id) }}">{{ $teknologi->judul }}</a>
-                                                    <span class="post-date"><i class="icon-clock"></i>{{ $teknologi->created_at->format('d M Y') }}</span>
-                                                    <span class="post-category"><i class="fa fa-tag"></i>{{ $teknologi->kategori }}</span>
-                                                </div>
-                                            </div>
+                                                @if ($teknologi->status == '1')
+                                                    <div class="post-thumbnail-entry">
+                                                        <img alt="" src="{{ asset('images/' . $teknologi->foto) }}">
+                                                        <div class="post-thumbnail-content">
+                                                            <a href="{{ route('detail', $teknologi->id) }}">{{ $teknologi->judul }}</a>
+                                                            <span class="post-date"><i class="icon-clock"></i>{{ $teknologi->created_at->format('d M Y') }}</span>
+                                                            <span class="post-category"><i class="fa fa-tag"></i>{{ $teknologi->kategori }}</span>
+                                                        </div>
+                                                    </div>
+                                                @endif
                                             @endforeach
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="recent" role="tabpanel" aria-labelledby="recent-tab">
                                         <div class="post-thumbnail-list">
                                             @foreach ($tutorial as $tutorial)
-                                            <div class="post-thumbnail-entry">
-                                                <img alt="" src="{{ asset('images/' . $tutorial->foto) }}">
-                                                <div class="post-thumbnail-content">
-                                                    <a href="{{ route('detail', $tutorial->id) }}">{{ $tutorial->judul }}</a>
-                                                    <span class="post-date"><i class="icon-clock"></i>{{ $tutorial->created_at->format('d M Y') }}</span>
-                                                    <span class="post-category"><i class="fa fa-tag"></i>{{ $tutorial->kategori }}</span>
-                                                </div>
-                                            </div>
+                                                @if ($tutorial->status == '1')
+                                                    <div class="post-thumbnail-entry">
+                                                        <img alt="" src="{{ asset('images/' . $tutorial->foto) }}">
+                                                        <div class="post-thumbnail-content">
+                                                            <a href="{{ route('detail', $tutorial->id) }}">{{ $tutorial->judul }}</a>
+                                                            <span class="post-date"><i class="icon-clock"></i>{{ $tutorial->created_at->format('d M Y') }}</span>
+                                                            <span class="post-category"><i class="fa fa-tag"></i>{{ $tutorial->kategori }}</span>
+                                                        </div>
+                                                    </div>
+                                                @endif
                                             @endforeach
                                         </div>
                                     </div>

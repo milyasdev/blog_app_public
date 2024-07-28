@@ -11,7 +11,7 @@
             <div class="header-inner">
                 <div class="container">
                     <!--Logo-->
-                    <div id="logo"> <a href="index.html"><span class="logo-default">ADMIN</span><span class="logo-dark">ADMIN</span></a> </div>
+                    <div id="logo"> <a href="{{ route('adminIndex') }}"><span class="logo-default">ADMIN</span><span class="logo-dark">ADMIN</span></a> </div>
                     <!--End: Logo-->
                     <!-- Search -->
                     <div id="search"><a id="btn-search-close" class="btn-search-close" aria-label="Close search form"><i class="icon-x"></i></a>
@@ -35,17 +35,6 @@
                             <div class="container">
                                 <nav>
                                     <ul>
-                                        {{-- <li><a href="index.html">Home</a></li> --}}
-                                        {{-- <li class="dropdown"><a href="#">Kategori</a>
-                                            <ul class="dropdown-menu">
-                                                <li class=""><a href="#">POST</a>
-                                                </li>
-                                                <li class=""><a href="#">Teknologi</a>
-                                                </li>
-                                                <li class=""><a href="#">Tutorial</a>
-                                                </li>
-                                            </ul>
-                                        </li> --}}
                                         <li>|</li>
                                         <li><a href="{{ route('proses_logout') }}">Log Out</a></li>
                                     </ul>
@@ -68,8 +57,10 @@
                     <ul>
                         <li class="dropdown"><a href="#">Menu</a>
                             <ul class="dropdown-menu">
+                                <li><a href="{{ route('adminIndex') }}">Home</a></li>
+                                <li><a href="{{ route('form_banner') }}">Banner</a></li>
                                 <li><a href="{{ route('form_tambah_user') }}">Management User</a></li>
-                                <li><a href="#">Pesan Masuk</a></li>
+                                <li><a href="{{ route('listPesan') }}">Pesan Masuk</a></li>
                             </ul>
                         </li>
                         <li class="dropdown"><a href="#">Advanced</a>
