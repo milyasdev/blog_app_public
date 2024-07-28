@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ArtikelModel;
+use App\Models\BannerModel;
 use App\Models\KomentarModel;
 use App\Models\PesanModel;
 use Illuminate\Http\Request;
@@ -12,8 +13,9 @@ class MainController extends Controller
 
     public function index(){
         $data = ArtikelModel::all();
-
-        return view('master.index', compact('data'));
+        $banner = BannerModel::where('id', '1')->first();
+        // dd($banner);
+        return view('master.index', compact('data', 'banner'));
     }
 
     public function detail($id){

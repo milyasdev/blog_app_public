@@ -11,7 +11,7 @@
             <div class="header-inner">
                 <div class="container">
                     <!--Logo-->
-                    <div id="logo"> <a href="index.html"><span class="logo-default">ADMIN</span><span class="logo-dark">ADMIN</span></a> </div>
+                    <div id="logo"> <a href="{{ route('adminIndex') }}"><span class="logo-default">ADMIN</span><span class="logo-dark">ADMIN</span></a> </div>
                     <!--End: Logo-->
                     <!-- Search -->
                     <div id="search"><a id="btn-search-close" class="btn-search-close" aria-label="Close search form"><i class="icon-x"></i></a>
@@ -68,8 +68,10 @@
                     <ul>
                         <li class="dropdown"><a href="#">Menu</a>
                             <ul class="dropdown-menu">
+                                <li><a href="{{ route('adminIndex') }}">Home</a></li>
+                                <li><a href="{{ route('form_banner') }}">Banner</a></li>
                                 <li><a href="{{ route('form_tambah_user') }}">Management User</a></li>
-                                <li><a href="#">Pesan Masuk</a></li>
+                                <li><a href="{{ route('listPesan') }}">Pesan Masuk</a></li>
                             </ul>
                         </li>
                         <li class="dropdown"><a href="#">Advanced</a>
@@ -111,7 +113,7 @@
                                     <th>Tanggal Upload</th>
                                     <th>Judul</th>
                                     <th>Foto</th>
-                                    <th>Jumlah Komentar</th>
+                                    <th>Jumlah View</th>
                                     <th>Kategori</th>
                                     <th class="noExport">Actions</th>
                                 </tr>
@@ -124,15 +126,25 @@
                                 <tr>
                                     <td>{{ $no = $no + 1 }}</td>
                                     <td>{{ $item->created_at->format('d M Y') }}</td>
-                                    <td>{{ $item->judul }} | <span class="badge badge-pill bg-success">Active</span></td>
+                                    <td>{{ $item->judul }} |
+                                        @if ($item->status == '1')
+                                        <span class="badge badge-pill bg-success">Active</span>
+                                        @else
+                                        <span class="badge badge-pill bg-danger">Offline</span>
+                                        @endif
+                                    </td>
                                     <td><img src="{{ asset('images/' . $item->foto) }}" alt="Gambar" width="100" height="auto"></td>
-                                    <td>3</td>
+                                    <td>{{ $item->view_count }}</td>
                                     <td><span class="badge badge-pill bg-primary">{{ $item->kategori }}</span>
                                     </td>
                                     <td>
-                                        <a class="btn btn-sm btn-light" href="#" data-bs-toggle="tooltip" data-bs-original-title="Edit"><i class="fas fas-pencil"></i>non aktif</a>
-                                        <a class="btn btn-sm btn-warning" href="#" data-bs-toggle="tooltip" data-bs-original-title="Edit"><i class="fas fas-pencil"></i>edit</a>
-                                        <a class="btn btn-sm btn-danger" href="#" data-bs-toggle="tooltip" data-bs-original-title="Edit"><i class="fas fa-trash-alt"></i></a>
+                                        @if ($item->status == '1')
+                                            <a class="btn btn-sm btn-light" href="{{ route('switch', $item->id) }}" data-bs-toggle="tooltip" data-bs-original-title=""><i class="fas fas-pencil"></i>non aktif</a>
+                                        @elseif ($item->status == '2')
+                                            <a class="btn btn-sm btn-success" href="{{ route('switch', $item->id) }}" data-bs-toggle="tooltip" data-bs-original-title=""><i class="fas fas-pencil"></i>aktifkan</a>
+                                        @endif
+                                        <a class="btn btn-sm btn-warning" href="{{ route('form_edit_artikel', $item->id) }}" data-bs-toggle="tooltip" data-bs-original-title=""><i class="fas fas-pencil"></i>edit</a>
+                                        <a class="btn btn-sm btn-danger" href="{{ route('prosesHapus', $item->id) }}" data-bs-toggle="tooltip" data-bs-original-title=""><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach

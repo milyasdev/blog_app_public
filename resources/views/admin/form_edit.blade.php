@@ -106,15 +106,15 @@
                     <div class="content col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <span class="h4">Form Tambah Data Artikel</span>
+                                <span class="h4">Halaman Edit : {{$data->judul}}</span>
                             </div>
                             <div class="card-body">
-                                <form id="form1" action="{{ route('proses_tambah_artikel') }}" class="form-validate" method="POST" enctype="multipart/form-data">
+                                <form id="form1" action="{{ route('proses_edit_artikels', $data->id) }}" class="form-validate" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label for="username">Judul</label>
-                                            <input type="text" class="form-control" name="judul" placeholder="Masukkan Judul" required>
+                                            <input type="text" class="form-control" name="judul" placeholder="Masukkan Judul" value="{{ old('judul', $data->judul) }}" required>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="email">Foto</label>
