@@ -35,17 +35,6 @@
                             <div class="container">
                                 <nav>
                                     <ul>
-                                        {{-- <li><a href="index.html">Home</a></li> --}}
-                                        {{-- <li class="dropdown"><a href="#">Kategori</a>
-                                            <ul class="dropdown-menu">
-                                                <li class=""><a href="#">POST</a>
-                                                </li>
-                                                <li class=""><a href="#">Teknologi</a>
-                                                </li>
-                                                <li class=""><a href="#">Tutorial</a>
-                                                </li>
-                                            </ul>
-                                        </li> --}}
                                         <li>|</li>
                                         <li><a href="{{ route('proses_logout') }}">Log Out</a></li>
                                     </ul>
@@ -72,7 +61,7 @@
                                 <li><a href="{{ route('form_banner') }}">Banner</a></li>
                                 <li><a href="{{ route('form_tambah_user') }}">Management User</a></li>
                                 <li><a href="{{ route('listPesan') }}">Pesan Masuk</a></li>
-                                <li><a href="{{ route('list_portofolio') }}">Portofolio saya</a></li>
+                                <li><a href="#">Portofolio saya</a></li>
                             </ul>
                         </li>
                         <li class="dropdown"><a href="#">Advanced</a>
@@ -97,12 +86,11 @@
                 <!-- DataTable -->
                 <div class="row mb-3">
                     <div class="col-lg-6">
-                        <h4>Daftar Artikel</h4>
-                        <p>Silahkan tambah artikel di list dibawah ini</p>
+                        <h4>Daftar Portofolio</h4>
+                        <p>Tambah Portofolio dibawah ini</p>
                     </div>
                     <div class="col-lg-6 text-end">
-                        <a href="{{ route('form_tambah_artikel') }}" class="btn btn-light">Tambah Artikel</a>
-                        <div id="export_buttons" class="mt-2"></div>
+                        <a data-bs-target="#modals" data-bs-toggle="modal" class="btn btn-light">Tambah Portofolio</a>
                     </div>
                 </div>
                 <div class="row">
@@ -111,11 +99,8 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Tanggal Upload</th>
-                                    <th>Judul</th>
-                                    <th>Foto</th>
-                                    <th>Jumlah View</th>
-                                    <th>Kategori</th>
+                                    <th>Nama Portofolio</th>
+                                    <th>URL</th>
                                     <th class="noExport">Actions</th>
                                 </tr>
                             </thead>
@@ -123,31 +108,15 @@
                                 @php
                                     $no = 0;
                                 @endphp
-                                @foreach ($data as $item)
-                                <tr>
-                                    <td>{{ $no = $no + 1 }}</td>
-                                    <td>{{ $item->created_at->format('d M Y') }}</td>
-                                    <td>{{ $item->judul }} |
-                                        @if ($item->status == '1')
-                                        <span class="badge badge-pill bg-success">Active</span>
-                                        @else
-                                        <span class="badge badge-pill bg-danger">Offline</span>
-                                        @endif
-                                    </td>
-                                    <td><img src="{{ asset('images/' . $item->foto) }}" alt="Gambar" width="100" height="auto"></td>
-                                    <td>{{ $item->view_count }}</td>
-                                    <td><span class="badge badge-pill bg-primary">{{ $item->kategori }}</span>
-                                    </td>
-                                    <td>
-                                        @if ($item->status == '1')
-                                            <a class="btn btn-sm btn-light" href="{{ route('switch', $item->id) }}" data-bs-toggle="tooltip" data-bs-original-title=""><i class="fas fas-pencil"></i>non aktif</a>
-                                        @elseif ($item->status == '2')
-                                            <a class="btn btn-sm btn-success" href="{{ route('switch', $item->id) }}" data-bs-toggle="tooltip" data-bs-original-title=""><i class="fas fas-pencil"></i>aktifkan</a>
-                                        @endif
-                                        <a class="btn btn-sm btn-warning" href="{{ route('form_edit_artikel', $item->id) }}" data-bs-toggle="tooltip" data-bs-original-title=""><i class="fas fas-pencil"></i>edit</a>
-                                        <a class="btn btn-sm btn-danger" href="{{ route('prosesHapus', $item->id) }}" data-bs-toggle="tooltip" data-bs-original-title=""><i class="fas fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
+                                @foreach ($portofolio as $item)
+                                    <tr>
+                                        <td>{{ $no = $no + 1 }}</td>
+                                        <td>{{$item->nama}}</td>
+                                        <td>{{$item->url}}</td>
+                                        <td>
+                                            <a class="btn btn-sm btn-danger" href="{{ route('hapusPorto', $item->id) }}" data-bs-toggle="tooltip" data-bs-original-title=""><i class="fas fa-trash-alt"></i></a>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -156,10 +125,36 @@
                 <!-- end: DataTable -->
             </div>
         </section>
-        <!-- end: Page Content -->
-        <!-- Footer -->
-        {{-- @include('master.footer') --}}
-        <!-- end: Footer -->
+
+        <div class="modal fade" id="modals" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modal-label">Masukin URL Portofolio</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form action="{{ route('simpan_porto') }}" method="post">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label for="nama">Nama:</label>
+                                        <input type="text" id="nama" name="nama" class="form-control" placeholder="Masukkan nama Anda">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="url">URL:</label>
+                                        <input type="text" id="url" name="url" class="form-control" placeholder="Masukkan URL Anda">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
     <!-- end: Body Inner -->
     <!-- Scroll top -->

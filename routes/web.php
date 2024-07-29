@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\PortofolioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,6 +38,10 @@ Route::middleware(['admin'])->group(function () {
         Route::get('/form-user', [AdminController::class, 'formTambahUser'])->name('form_tambah_user');
         Route::post('/tambah-user', [AdminController::class, 'prosesTambahUser'])->name('proses_tambah_user');
         Route::get('/proses-logout', [AdminController::class, 'prosesLogoutAdmins'])->name('proses_logout');
+
+        Route::get('/portofolio', [PortofolioController::class, 'listPortofolio'])->name('list_portofolio');
+        Route::post('/proses-porto', [PortofolioController::class, 'prosesSimpanPorto'])->name('simpan_porto');
+        Route::get('/hapus-porto/{id}', [PortofolioController::class, 'hapusPorto'])->name('hapusPorto');
 
         Route::get('/form-edit/{id}', [AdminController::class, 'formEditArtikel'])->name('form_edit_artikel');
         Route::post('/proses-edit/{id}', [AdminController::class, 'prosesEditArtikel'])->name('proses_edit_artikels');

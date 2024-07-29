@@ -13,8 +13,8 @@
                     <!--Logo-->
                     <div id="logo">
                         <a href="{{ route('home') }}">
-                            <span class="logo-default">myArtikel</span>
-                            <span class="logo-dark">myArtikel</span>
+                            <span class="logo-default"><img src="{{ asset('images/milyasdevlogo.png') }}" alt="" width="250" height="auto"></span>
+                            <span class="logo-dark"><img src="{{ asset('images/milyasdevlogo.png') }}" alt="" width="250" height="auto"></span>
                         </a>
                     </div>
                     <!--End: Logo-->
@@ -34,6 +34,13 @@
                             <nav>
                                 <ul>
                                     <li><a href="{{ route('home') }}">Home</a></li>
+                                    <li class="dropdown"><a href="#">Portofolio</a>
+                                        <ul class="dropdown-menu">
+                                            @foreach ($porto as $item)
+                                            <li><a href="{{ $item->url }}" target="_blank">{{$item->nama}}</a></li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
                                     <li class="dropdown"><a href="#">Koneksi</a>
                                         <ul class="dropdown-menu">
                                             <li><a href="https://www.linkedin.com/in/muhammad-ilyas-139403100" target="_blank">LinkedIn</a></li>
@@ -59,7 +66,7 @@
                     <div class="slide-captions text-center text-light">
                         <!-- Captions -->
                         <h2 style="font-size:40px" data-caption-animate="zoom-out">Temukan Wawasan Baru Yang Menarik</h2>
-                        <p>Jelajahi artikel bermanfaat dan informatif yang telah saya tulis.</p>
+                        <p>"MyArtikel" adalah portal yang saya buat untuk anda jelajahi. Temukan berbagai <br>artikel yang informatif yang bisa menambah insight anda.</p>
                         {{-- <div><a href="#welcome" class="btn btn-primary scroll-to">Explore more</a></div> --}}
                         </span>
                         <!-- end: Captions -->
@@ -83,8 +90,8 @@
         <section id="page-title">
             <div class="container">
                 <div class="page-title">
-                    <h1>Selamat Datang di myArtikel</h1>
-                    <span>Selamat Membaca, Semoga Menemukan Inspirasi.</span>
+                    <h1>Selamat Datang di MyArtikel</h1>
+                    <span>Eksplorasi konten saya dan temukan inspirasi yang bermanfaat.</span>
                 </div>
             </div>
         </section>
@@ -109,7 +116,7 @@
                                                 Comments</a></span>
                                         <h2>{{ $item->judul }}</h2>
                                         <p>{{ Str::limit($item->text, 100) }}</p>
-                                        <a href="{{ route('detail', $item->id) }}" class="btn btn-primary btn-sm">Selengkap nya</a>
+                                        <a href="{{ route('detail', $item->id) }}" class="btn btn-success btn-sm">Selengkap nya</a>
                                     </div>
                                 </div>
                             </div>

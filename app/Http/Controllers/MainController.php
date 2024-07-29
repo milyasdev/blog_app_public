@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ArtikelModel;
 use App\Models\BannerModel;
 use App\Models\KomentarModel;
+use App\Models\ListPortofolio;
 use App\Models\PesanModel;
 use Illuminate\Http\Request;
 
@@ -14,8 +15,9 @@ class MainController extends Controller
     public function index(){
         $data = ArtikelModel::all();
         $banner = BannerModel::where('id', '1')->first();
+        $porto = ListPortofolio::all();
         // dd($banner);
-        return view('master.index', compact('data', 'banner'));
+        return view('master.index', compact('data', 'banner', 'porto'));
     }
 
     public function detail($id){
