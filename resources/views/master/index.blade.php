@@ -60,7 +60,7 @@
         <!-- Inspiro Slider -->
         <div id="slider" class="inspiro-slider slider-fullscreen dots-creative" data-fade="true">
             <!-- Slide 1 -->
-            <div class="slide kenburns" data-bg-image="{{ asset('images/' . $banner->banner) }}">
+            <div class="slide kenburns" data-bg-image="{{ asset('storage/photos/' . $banner->banner) }}">
                 <div class="bg-overlay"></div>
                 <div class="container">
                     <div class="slide-captions text-center text-light">

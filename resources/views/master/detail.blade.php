@@ -64,7 +64,7 @@
                                 <div class="post-item-wrap">
                                     <div class="post-image">
                                         <a href="#">
-                                            <img alt="" src="{{ asset('images/' . $data->foto) }}">
+                                            <img alt="" src="{{ asset('storage/photos/' . $data->foto) }}">
                                         </a>
                                     </div>
                                     <div class="post-item-description">
@@ -167,7 +167,7 @@
                                             @if ($blog->status == '1')
                                             <div class="post-thumbnail-list">
                                                 <div class="post-thumbnail-entry">
-                                                    <img alt="" src="{{ asset('images/' . $blog->foto) }}">
+                                                    <img alt="" src="{{ asset('storage/photos/' . $blog->foto) }}">
                                                     <div class="post-thumbnail-content">
                                                         <a href="{{ route('detail', $blog->id) }}">{{ $blog->judul }}</a>
                                                         <span class="post-date"><i class="icon-clock"></i>{{ $blog->created_at->format('d M Y') }}</span>
@@ -183,7 +183,7 @@
                                             @foreach ($teknologi as $teknologi)
                                                 @if ($teknologi->status == '1')
                                                     <div class="post-thumbnail-entry">
-                                                        <img alt="" src="{{ asset('images/' . $teknologi->foto) }}">
+                                                        <img alt="" src="{{ asset('storage/photos/' . $teknologi->foto) }}">
                                                         <div class="post-thumbnail-content">
                                                             <a href="{{ route('detail', $teknologi->id) }}">{{ $teknologi->judul }}</a>
                                                             <span class="post-date"><i class="icon-clock"></i>{{ $teknologi->created_at->format('d M Y') }}</span>
@@ -199,7 +199,7 @@
                                             @foreach ($tutorial as $tutorial)
                                                 @if ($tutorial->status == '1')
                                                     <div class="post-thumbnail-entry">
-                                                        <img alt="" src="{{ asset('images/' . $tutorial->foto) }}">
+                                                        <img alt="" src="{{ asset('storage/photos/' . $tutorial->foto) }}">
                                                         <div class="post-thumbnail-content">
                                                             <a href="{{ route('detail', $tutorial->id) }}">{{ $tutorial->judul }}</a>
                                                             <span class="post-date"><i class="icon-clock"></i>{{ $tutorial->created_at->format('d M Y') }}</span>

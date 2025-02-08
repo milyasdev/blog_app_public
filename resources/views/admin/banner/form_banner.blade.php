@@ -20,7 +20,7 @@
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="email">Tampilan</label>
-                                    <img width="400" height="auto" alt="" src="{{ asset('images/' . $data->banner) }}"></a>
+                                    <img width="400" height="auto" alt="" src="{{ asset('storage/photos/' . $data->banner) }}"></a>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="email">Banner</label>
