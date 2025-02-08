@@ -37,13 +37,21 @@ class AdminController extends Controller
             'banner' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        if ($request->hasFile('banner')) {
-            $imageName = time().'.'.$request->banner->extension();
-            $request->banner->move(public_path('images'), $imageName);
-        }
-
         $data = BannerModel::findOrFail($id);
-        $data->banner = $imageName;
+        if($request->hasFile('banner')){
+
+            //hapus banner (opsional)
+            if($data->banner){
+             Storage::disk('public')->delete("photos/{$data->banner}");
+            }
+
+            //mengupload gambar baru
+            $picture = $request->file('banner');
+            $hashName = $picture->hashName();
+
+            Storage::disk('public')->put("photos/{$hashName}", file_get_contents($picture));
+            $data->banner = $hashName;
+         }
         $data->save();
 
 
@@ -152,7 +160,7 @@ class AdminController extends Controller
     public function prosesEditArtikel(Request $request, $id){
         $validatedData = $request->validate([
             'judul' => 'required',
-            'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'foto' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         $data = ArtikelModel::findOrFail($id);
