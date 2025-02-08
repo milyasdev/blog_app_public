@@ -9,24 +9,27 @@ use App\Models\BannerModel;
 use App\Models\PesanModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
     public function index(){
         $data = ArtikelModel::all();
+        $dd = $data->first();
+        // dd($dd);
 
-        return view('admin.index', compact('data'));
+        return view('admin.artikel.index', compact('data'));
     }
 
     public function listPesan(){
         $data = PesanModel::all();
 
-        return view('admin.pesan', compact('data'));
+        return view('admin.pesan_management.pesan', compact('data'));
     }
 
     public function formBanner(){
         $data = BannerModel::where('id', '1')->first();
-        return view('admin.form_banner', compact('data'));
+        return view('admin.banner.form_banner', compact('data'));
     }
 
     public function gantiBanner(Request $request, $id){
@@ -44,7 +47,7 @@ class AdminController extends Controller
         $data->save();
 
 
-        return redirect()->route('form_banner', $id);
+        return redirect()->route('adminIndex')->with('success', 'Oke, banner berhasil diganti');
     }
 
     public function loginAdmins(){
@@ -52,11 +55,11 @@ class AdminController extends Controller
     }
 
     public function formTambahArtikel(){
-        return view('admin.form');
+        return view('admin.artikel.form');
     }
 
     public function formTambahUser(){
-        return view('admin.form_user');
+        return view('admin.user_management.form_user');
     }
 
     public function prosesLoginAdmins(Request $request){
@@ -92,23 +95,35 @@ class AdminController extends Controller
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        if ($request->hasFile('foto')) {
-            $imageName = time().'.'.$request->foto->extension();
-            $request->foto->move(public_path('images'), $imageName);
+        $article = new ArtikelModel();
+
+        if($request->hasFile('foto')){
+
+           //hapus foto (opsional)
+           if($article->foto){
+            Storage::disk('public')->delete("photos/{$article->foto}");
+           }
+
+           //mengupload gambar baru
+           $picture = $request->file('foto');
+           $hashName = $picture->hashName();
+
+           Storage::disk('public')->put("photos/{$hashName}", file_get_contents($picture));
+           $article->foto = $hashName;
         }
 
-        $article = new ArtikelModel();
+
         $article->judul = $validatedData['judul'];
         $article->text = $validatedData['text'];
         $article->kategori = $validatedData['kategori'];
-        $article->foto = $imageName;
+
         $article->status = 1; // default status
 
         // Simpan artikel ke database
         $article->save();
 
 
-        return redirect()->route('adminIndex');
+        return redirect()->route('adminIndex')->with('success', 'Artikel Berhasil Ditambahkan..!!');
     }
 
     public function prosesTambahUser(Request $request){
@@ -125,13 +140,13 @@ class AdminController extends Controller
         $user->save();
 
 
-        return redirect()->route('adminIndex');
+        return redirect()->route('adminIndex')->with('success', 'Ada user yang sudah ditambahkan');
     }
 
     public function formEditArtikel($id){
         $data = ArtikelModel::where('id', $id)->first();
 
-        return view('admin.form_edit', compact('data'));
+        return view('admin.artikel.form_edit', compact('data'));
     }
 
     public function prosesEditArtikel(Request $request, $id){
@@ -142,15 +157,24 @@ class AdminController extends Controller
 
         $data = ArtikelModel::findOrFail($id);
         $data->judul = $validatedData['judul'];
-        $data->foto = $validatedData['foto'];
+        // $data->foto = $validatedData['foto'];
 
         if ($request->has('text')) {
             $data->text = $request->input('text');
         }
-            // Simpan file ke storage dan dapatkan path-nya
-            $imageName = time().'.'.$request->foto->extension();
-            $request->foto->move(public_path('images'), $imageName);
-            $data->foto = $imageName;
+
+        // Simpan file ke storage dan dapatkan path-nya
+        if($request->hasFile('foto')){
+            //hapus foto (opsional)
+            if($data->foto){
+            Storage::disk('public')->delete("photos/{$data->foto}");
+            }
+            //mengupload gambar baru
+            $picture = $request->file('foto');
+            $hashName = $picture->hashName();
+            Storage::disk('public')->put("photos/{$hashName}", file_get_contents($picture));
+            $data->foto = $hashName;
+        }
 
         if ($request->has('kategori')) {
             $data->kategori = $request->input('kategori');
@@ -159,20 +183,20 @@ class AdminController extends Controller
 
         $data->save();
 
-        return redirect()->route('adminIndex');
+        return redirect()->route('adminIndex')->with('success', 'Data Berhasil di Edit');
     }
 
     public function switch($id){
         $data = ArtikelModel::findOrFail($id);
 
-    if ($data->status == '1') {
-        $data->status = '2';
-    } else if ($data->status == '2') {
-        $data->status = '1';
-    }
+        if ($data->status == '1') {
+            $data->status = '2';
+        } else if ($data->status == '2') {
+            $data->status = '1';
+        }
 
-    $data->save();
-    return redirect()->route('adminIndex');
+        $data->save();
+        return redirect()->route('adminIndex');
     }
 
     public function prosesHapus($id){

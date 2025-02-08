@@ -107,7 +107,7 @@
                                 <div class="post-item-wrap">
                                     <div class="post-image">
                                         <a href="#">
-                                            <img alt="" src="{{ asset('images/' . $item->foto) }}"></a>
+                                            <img alt="gambar.png" style="width: 340px; height: 210px" src="{{ asset('storage/photos/' . $item->foto) }}"></a>
                                         <span class="post-meta-category"><a href="">{{$item->kategori}}</a></span>
                                     </div>
                                     <div class="post-item-description">
@@ -115,7 +115,7 @@
                                         <span class="post-meta-comments"><i class="fa fa-comments-o"></i>33
                                                 Comments</a></span>
                                         <h2>{{ $item->judul }}</h2>
-                                        <p>{{ Str::limit($item->text, 100) }}</p>
+                                        <p>{!! Str::limit($item->text, 100) !!}</p>
                                         <a href="{{ route('detail', $item->id) }}" class="btn btn-success btn-sm">Selengkap nya</a>
                                     </div>
                                 </div>
