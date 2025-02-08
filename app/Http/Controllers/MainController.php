@@ -30,7 +30,8 @@ class MainController extends Controller
         $komen = KomentarModel::where('id_artikel', $id)->get();
         // dd($komen);
         $comments = $data->comments;
-        return view('master.detail', compact('data', 'komen', 'comments', 'blog', 'teknologi', 'tutorial'));
+        $porto = ListPortofolio::all();
+        return view('master.detail', compact('porto','data', 'komen', 'comments', 'blog', 'teknologi', 'tutorial'));
     }
 
     public function prosesTambahArtikel(Request $request, $id){
