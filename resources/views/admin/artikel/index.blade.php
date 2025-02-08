@@ -57,9 +57,9 @@
                             </td>
                             <td>
                                 @if ($item->status == '1')
-                                    <a class="btn btn-sm btn-light" href="{{ route('switch', $item->id) }}" data-bs-toggle="tooltip" data-bs-original-title=""><i class="fas fa-toggle-off"></i></a>
-                                @elseif ($item->status == '2')
                                     <a class="btn btn-sm btn-success" href="{{ route('switch', $item->id) }}" data-bs-toggle="tooltip" data-bs-original-title=""><i class="fas fa-toggle-on"></i></a>
+                                @elseif ($item->status == '2')
+                                    <a class="btn btn-sm btn-light" href="{{ route('switch', $item->id) }}" data-bs-toggle="tooltip" data-bs-original-title=""><i class="fas fa-toggle-off"></i></a>
                                 @endif
                                 <a class="btn btn-sm btn-warning" href="{{ route('form_edit_artikel', $item->id) }}" data-bs-toggle="tooltip" data-bs-original-title=""><i class="fas fa-edit"></i></a>
                                 <button onclick="confirmHapus('{{ route('prosesHapus', ['id'=>$item->id]) }}')" class="btn btn-sm btn-danger">
