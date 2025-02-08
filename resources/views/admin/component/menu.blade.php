@@ -28,6 +28,11 @@
                         <li><a href="{{ route('form_tambah_user') }}">Tambah User</a></li>
                     </ul>
                 </li>
+                <li class="dropdown"><a href="#">Lainnya</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">-- coming soon --</a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <div id="pageMenu-trigger">
