@@ -18,6 +18,7 @@
                     <div class="slide-captions text-center text-light">
                         <!-- Captions -->
                         <h2 style="font-size:40px" data-caption-animate="zoom-out">Temukan Wawasan Baru Yang Menarik
+                            -CICD-
                         </h2>
                         <p>"MyArtikel" adalah portal yang saya buat untuk anda jelajahi. Temukan berbagai <br>artikel
                             yang informatif yang bisa menambah insight anda.</p>
