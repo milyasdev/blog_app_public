@@ -27,6 +27,8 @@ Route::get('/reload-captcha', [MainController::class, 'reload'])->name('reload')
 Route::get('/login-admins', [AdminController::class, 'loginAdmins'])->name('halaman_login');
 Route::post('/proses-login-admins', [AdminController::class, 'prosesLoginAdmins'])->name('proses_login');
 
+include_once('infoPublik.php');
+
 Route::middleware(['admin'])->group(function () {
         Route::get('/admin',[AdminController::class, 'index'])->name('adminIndex');
         Route::get('/pesan', [AdminController::class, 'listPesan'])->name('listPesan');
