@@ -44,7 +44,7 @@
         <section id="page-title">
             <div class="container">
                 <div class="page-title">
-                    <h1>Selamat Datang di MyArtikel -- CID/CD TEST 01</h1>
+                    <h1>Selamat Datang di MyArtikel</h1>
                     <span>Eksplorasi konten saya dan temukan inspirasi yang bermanfaat.</span>
                 </div>
             </div>
