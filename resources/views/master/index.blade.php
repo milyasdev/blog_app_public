@@ -18,7 +18,6 @@
                     <div class="slide-captions text-center text-light">
                         <!-- Captions -->
                         <h2 style="font-size:40px" data-caption-animate="zoom-out">Temukan Wawasan Baru Yang Menarik
-                            -CICD-
                         </h2>
                         <p>"MyArtikel" adalah portal yang saya buat untuk anda jelajahi. Temukan berbagai <br>artikel
                             yang informatif yang bisa menambah insight anda.</p>
@@ -45,7 +44,7 @@
         <section id="page-title">
             <div class="container">
                 <div class="page-title">
-                    <h1>Selamat Datang di MyArtikel -- CID/CD TEST 01</h1>
+                    <h1>Selamat Datang di MyArtikel</h1>
                     <span>Eksplorasi konten saya dan temukan inspirasi yang bermanfaat.</span>
                 </div>
             </div>
