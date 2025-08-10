@@ -30,7 +30,7 @@
         </div>
         <div class="copyright-content">
             <div class="container">
-                <div class="copyright-text text-center">&copy; 2024 All Right Reserved</div>
+                <div class="copyright-text text-center">&copy; 2024 - All Right Reserved</div>
             </div>
         </div>
 </footer>
