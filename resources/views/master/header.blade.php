@@ -4,10 +4,10 @@
             <!--Logo-->
             <div id="logo">
                 <a href="{{ route('home') }}">
-                    <span class="logo-default"><img src="{{ asset('images/milyasdevlogo.png') }}" alt=""
-                            width="250" height="auto"></span>
-                    <span class="logo-dark"><img src="{{ asset('images/milyasdevlogo.png') }}" alt=""
-                            width="250" height="auto"></span>
+                    <span class="logo-default"><img src="{{ asset('images/logo.png') }}" alt="" width="250"
+                            height="auto"></span>
+                    <span class="logo-dark"><img src="{{ asset('images/logo.png') }}" alt="" width="250"
+                            height="auto"></span>
                 </a>
             </div>
             <!--End: Logo-->
@@ -41,11 +41,11 @@
                             </li>
                             <li class="dropdown"><a href="#">Koneksi</a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="https://www.linkedin.com/in/muhammad-ilyas-139403100"
-                                            target="_blank">LinkedIn</a></li>
-                                    <li><a href="https://www.instagram.com/idmils?igsh=MTZ1djQwenYxMmt6eg=="
-                                            target="_blank">Instagram</a></li>
-                                    <li><a href="https://github.com/milyasdev" target="_blank">My GitHub</a></li>
+                                    <li><a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+                                    </li>
+                                    <li><a href="https://www.instagram.com" target="_blank">Instagram</a>
+                                    </li>
+                                    <li><a href="https://github.com" target="_blank">My GitHub</a></li>
                                     <li><a href="{{ route('form-contact') }}">Hubungi Saya</a></li>
                                 </ul>
                             </li>
