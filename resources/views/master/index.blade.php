@@ -44,7 +44,8 @@
             <div class="container">
                 <div class="page-title">
                     <h1>Welcome in Blog Apps</h1>
-                    <span>Feel free to explore and find new insight</span>
+                    <span>Feel free to explore and find new insight, Explore meaningful content that broadens your
+                        horizon.</span>
                 </div>
             </div>
         </section>
