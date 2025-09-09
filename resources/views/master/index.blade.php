@@ -12,15 +12,14 @@
         <!-- Inspiro Slider -->
         <div id="slider" class="inspiro-slider slider-fullscreen dots-creative" data-fade="true">
             <!-- Slide 1 -->
-            <div class="slide kenburns" data-bg-image="{{ asset('storage/photos/' . $banner->banner) }}">
+            <div class="slide kenburns" data-bg-image="{{ asset('storage/photos/photobanner.jpg') }}">
                 <div class="bg-overlay"></div>
                 <div class="container">
                     <div class="slide-captions text-center text-light">
                         <!-- Captions -->
-                        <h2 style="font-size:40px" data-caption-animate="zoom-out">Temukan Wawasan Baru Yang Menarik
+                        <h2 style="font-size:40px" data-caption-animate="zoom-out">Find New Insight Here
                         </h2>
-                        <p>"MyArtikel" adalah portal yang saya buat untuk anda jelajahi. Temukan berbagai <br>artikel
-                            yang informatif yang bisa menambah insight anda.</p>
+                        <p>Discover ideas, stories, and knowledge that inspire growth.</p>
                         {{-- <div><a href="#welcome" class="btn btn-primary scroll-to">Explore more</a></div> --}}
                         </span>
                         <!-- end: Captions -->
@@ -44,8 +43,8 @@
         <section id="page-title">
             <div class="container">
                 <div class="page-title">
-                    <h1>Selamat Datang di MyArtikel</h1>
-                    <span>Eksplorasi konten saya dan temukan inspirasi yang bermanfaat.</span>
+                    <h1>Welcome in Blog Apps</h1>
+                    <span>Feel free to explore and find new insight</span>
                 </div>
             </div>
         </section>
